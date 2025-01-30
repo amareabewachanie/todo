@@ -1,0 +1,5 @@
+<form #f="ngForm" (ngSubmit)="addNewItem(task)">
+<label for="name">Task</label>
+<input type="text" [(ngModel)]="task" name="task" required ngModel/>
+<button [disabled]="f.invalid" type="submit" value="Add">Add</button>
+</form>

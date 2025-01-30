@@ -10,13 +10,18 @@ import { TodoService } from '../../shared/services/todo.service';
 export class ToDoListComponent implements OnChanges, OnChanges,DoCheck  {
 
  @Input() todoItems: any[]=[];
- @Output() newItemAdded = new EventEmitter<string>();
+ @Output() todoItemsChange = new EventEmitter<string>();
   @Input() title: string ='';
   item: string = '';
   price: number = 500;
 addItem(todoName: string){
-  //this.todoItems.push(todoName.value);
-   this.newItemAdded.emit(todoName);
+  this.todoItems.push({
+    userId: 1,
+    id: 1,
+    title: todoName,
+    completed: false
+})
+this.todoItemsChange.emit(todoName);
 }
 ngDoCheck(): void {
   console.log('I am here in do check');

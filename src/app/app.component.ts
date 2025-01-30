@@ -16,19 +16,6 @@ constructor(private todoService: TodoService) {
   this.todoService.fetchTodoItem().subscribe((data: any)=>{
     this.todoItems = data;
   });
-}
-
-
-  // summary(): string {
-  //   return `${this.completedTodos.length} tasks has been done.`
-  // }
-  itemAdded(newItem: string){
-    this.todoItems.push({
-      userId: 1,
-      id: 1,
-      title: newItem,
-      completed: false
-  });
 
   }
 }
