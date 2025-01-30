@@ -1,0 +1,10 @@
+<h1>{{title | uppercase}}</h1>
+<ul>
+  <li *ngFor="let item of todoItems;
+   let i=index; let even=even;
+   let last=last;let first=first; let odd = odd;">
+   {{item.title}}
+  </li>
+</ul>
+<p>{{price | etb}}</p>
+<app-text-input (itemAdded)="addItem($event)"></app-text-input>
