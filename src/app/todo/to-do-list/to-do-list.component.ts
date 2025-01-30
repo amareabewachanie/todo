@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { TodoService } from '../../shared/services/todo.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { TodoService } from '../../shared/services/todo.service';
   templateUrl: './to-do-list.component.html',
   styleUrl: './to-do-list.component.css'
 })
-export class ToDoListComponent implements OnChanges  {
+export class ToDoListComponent implements OnChanges, OnChanges,DoCheck  {
 
  @Input() todoItems: any[]=[];
  @Output() newItemAdded = new EventEmitter<string>();
@@ -18,7 +18,14 @@ addItem(todoName: string){
   //this.todoItems.push(todoName.value);
    this.newItemAdded.emit(todoName);
 }
-ngOnChanges(changes: SimpleChanges): void {
-  console.log('I am here',changes);
-}
+ngDoCheck(): void {
+  console.log('I am here in do check');
+
+ }
+ ngOnInit(): void {
+   console.log('I am here on init');
+ }
+ ngOnChanges(changes: SimpleChanges): void {
+   console.log('I am here on change');
+ }
 }

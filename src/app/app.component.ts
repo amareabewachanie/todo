@@ -7,28 +7,17 @@ import { TodoService } from './shared/services/todo.service';
   styleUrl: './app.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit, OnChanges, DoCheck{
+export class AppComponent {
   title: any = 'Todo List';
    todoItems:any[]= []
 
 constructor(private todoService: TodoService) {
 
-
+  this.todoService.fetchTodoItem().subscribe((data: any)=>{
+    this.todoItems = data;
+  });
 }
-  ngDoCheck(): void {
-   console.log('I am here in do check');
 
-  }
-  ngOnInit(): void {
-    console.log('I am here on init');
-
-    this.todoService.fetchTodoItem().subscribe((data: any)=>{
-      this.todoItems = data;
-    });
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('I am here on change');
-  }
 
   // summary(): string {
   //   return `${this.completedTodos.length} tasks has been done.`
