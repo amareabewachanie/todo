@@ -1,6 +1,7 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { TodoService } from '../../shared/services/todo.service';
 import { Router } from '@angular/router';
+import { TodoItem } from '../../shared/models/todo-item.model';
 
 @Component({
   selector: 'app-to-do-list',
@@ -13,7 +14,7 @@ export class ToDoListComponent implements OnInit{
   item: string = '';
   price: number = 500;
 
-  todoItems:any[]= []
+  todoItems:TodoItem[]= []
 
   constructor(private todoService: TodoService, private router: Router) {
 
@@ -27,7 +28,7 @@ addItem(todoName: string){
 })
 }
  ngOnInit(): void {
-  this.todoService.fetchTodoItem().subscribe((data: any)=>{
+  this.todoService.fetchTodoItems().subscribe((data: any)=>{
     this.todoItems = data;
   });
  }

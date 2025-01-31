@@ -14,7 +14,8 @@ import { EditToDoComponent } from "./todos/edit-to-do/edit-to-do.component";
 import { routes } from "./app.routes";
 
 @NgModule({
-  imports:[RouterModule.forRoot(routes), BrowserModule, CommonModule,FormsModule, HttpClientModule,FormsModule,ReactiveFormsModule],
+  imports:[RouterModule.forRoot(routes), BrowserModule,
+     CommonModule,FormsModule, HttpClientModule,FormsModule,ReactiveFormsModule],
   declarations:[
     AppComponent, ToDoListComponent, TextInputComponent, EtbPipe, CreateTodoComponent,EditToDoComponent
   ],

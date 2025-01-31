@@ -19,7 +19,7 @@ export class EditToDoComponent implements OnInit {
    private httpClient: HttpClient,private router: ActivatedRoute) {
 
    this.editForm = fb.group({
-    title:['', Validators.required]
+    title:['', [Validators.required, Validators.min(10),Validators.pattern('(a-zA-Z)')]]
    });
  }
   ngOnInit(): void {
