@@ -4,18 +4,9 @@ import { TodoService } from './shared/services/todo.service';
   standalone:false,
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title: any = 'Todo List';
-   todoItems:any[]= []
 
-constructor(private todoService: TodoService) {
-
-  this.todoService.fetchTodoItem().subscribe((data: any)=>{
-    this.todoItems = data;
-  });
-
-  }
 }

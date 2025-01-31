@@ -1,0 +1,5 @@
+<form [formGroup]="editForm" (ngSubmit)="edit()">
+    <label for="name">Task</label>
+    <input type="text" formControlName="title" />
+    <button [disabled]="editForm.invalid" type="submit" value="Add">Edit</button>
+    </form>

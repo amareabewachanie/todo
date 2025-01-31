@@ -4,7 +4,7 @@
    let i=index; let even=even;
    let last=last;let first=first; let odd = odd;" [ngClass]="item.completed?'completed':''" [ngStyle]=" {'font-size':'22px'}">
    {{item.title}}
+   <a href="/edit/{{item.id}}">Edit</a>
   </li>
 </ul>
 <p>{{price | etb}}</p>
-<app-create-todo></app-create-todo>

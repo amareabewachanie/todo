@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-todo',
@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class CreateTodoComponent {
   task: string='';
+  @Output() itemAdded = new EventEmitter<string>();
   addNewItem(name:string){
-     console.log('Item added', name);
+    console.log(name);
 
+    this.itemAdded.emit(name)
   }
 }
