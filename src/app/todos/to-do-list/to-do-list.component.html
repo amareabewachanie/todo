@@ -1,10 +1,37 @@
-<h1>{{title | uppercase}}</h1>
-<ul>
-  <li *ngFor="let item of todoItems;
-   let i=index; let even=even;
-   let last=last;let first=first; let odd = odd;" [ngClass]="item.completed?'completed':''" [ngStyle]=" {'font-size':'22px'}">
-   {{item.title}}
-   <a href="/edit/{{item.id}}">Edit</a>
-  </li>
-</ul>
-<p>{{price | etb}}</p>
+
+<h2>List of Todos</h2>
+<table class="table table-bordered">
+<thead>
+  <th>Id</th>
+  <th>Name</th>
+  <th>Status</th>
+</thead>
+<tbody>
+  <tr *ngFor="let item of list">
+    <td>{{item.id}}</td>
+<td>{{item.title}}</td>
+<td>
+   <i class="bi bi-check-circle-fill btn btn-success" *ngIf="item.completed"></i>
+   <i class="bi bi-check-circle-fill btn btn-danger" *ngIf="!item.completed"></i>
+  </td>
+  </tr>
+</tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item" (click)="changePage()"><a class="page-link">2</a>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+  <div>
+  Show
+  <select [(ngModel)]="pageSize">
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+  </select> Items per page
+</div>
+</nav>
+

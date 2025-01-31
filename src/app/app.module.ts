@@ -12,12 +12,16 @@ import { HttpClientModule } from "@angular/common/http";
 import { CreateTodoComponent } from "./todos/create-todo/create-todo.component";
 import { EditToDoComponent } from "./todos/edit-to-do/edit-to-do.component";
 import { routes } from "./app.routes";
+import { HeaderComponent } from "./shared/components/header/header.component";
+import { SideBarComponent } from "./shared/components/side-bar/side-bar.component";
 
 @NgModule({
   imports:[RouterModule.forRoot(routes), BrowserModule,
      CommonModule,FormsModule, HttpClientModule,FormsModule,ReactiveFormsModule],
   declarations:[
-    AppComponent, ToDoListComponent, TextInputComponent, EtbPipe, CreateTodoComponent,EditToDoComponent
+    AppComponent, ToDoListComponent,
+     TextInputComponent, EtbPipe, CreateTodoComponent,
+     EditToDoComponent, HeaderComponent, SideBarComponent
   ],
   bootstrap:[AppComponent],
   providers:[TodoService],

@@ -12,8 +12,8 @@ export class TodoService {
   private httpClient = inject(HttpClient);
   serverAddress = environment.serverAddress;
 
-  fetchTodoItems() {
-    return this.httpClient.get(this.serverAddress);
+  fetchTodoItems():Observable<TodoItem[]> {
+    return this.httpClient.get<TodoItem[]>(this.serverAddress);
   }
   fetchTodoItem(id: number) {
     return this.httpClient.get(`${this.serverAddress}/${id}`);

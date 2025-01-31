@@ -14,8 +14,10 @@ export class ToDoListComponent implements OnInit{
   item: string = '';
   price: number = 500;
 
-  todoItems:TodoItem[]= []
-
+  todoItems:TodoItem[]= [];
+  currentPage = 0;
+  pageSize=10;
+  list: TodoItem[]=[];
   constructor(private todoService: TodoService, private router: Router) {
 
     }
@@ -28,11 +30,18 @@ addItem(todoName: string){
 })
 }
  ngOnInit(): void {
-  this.todoService.fetchTodoItems().subscribe((data: any)=>{
+  this.todoService.fetchTodoItems().subscribe((data: TodoItem[])=>{
     this.todoItems = data;
+    this.list=data.slice(this.currentPage * this.pageSize, this.currentPage>0?((this.currentPage+1 *this.pageSize)): this.pageSize);
   });
  }
  editItem(item:string){
   this.router.navigateByUrl('');
+ }
+ changePage(){
+  this.currentPage=1;
+  this.pageSize=10
+  const currentPageSize =this.currentPage>0?((this.currentPage+1) * this.pageSize) : this.pageSize;
+  this.list =this.todoItems.slice(this.currentPage * this.pageSize, currentPageSize)
  }
 }
